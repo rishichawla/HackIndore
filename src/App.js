@@ -12,14 +12,31 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  state = {
+    response: ''
+  };
+
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
   }
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ response: res.express }))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch('/api/hello');
+    const body = await response.json();
+    if (response.status !== 200)
+      throw Error(body.message);
+    return body;
+  };
 
   render() {
     return (
@@ -31,10 +48,10 @@ class App extends Component {
         <div className="form">
           <form onSubmit={this.handleSubmit}>
             <p> Enter text to be translated: </p>
-            <textarea value={this.state.value} id="itext" onSubmit={this.state.value} onChange={this.handleChange} />
+            <textarea id="itext" onChange={this.handleChange} />
             <button id="translate"> Translate </button>
             <p> Translated text: </p>
-            <textarea value={this.state.value} id="otext" onChange={this.handleChange} />
+            <textarea value={this.state.response} id="otext" onChange={this.handleChange} />
           </form>
         </div>
       </div>
