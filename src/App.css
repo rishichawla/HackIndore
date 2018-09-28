@@ -9,13 +9,12 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
   color: white;
 }
 
 .App-title {
   font-size: 1.5em;
+  display: inline-block;
 }
 
 .App-intro {
@@ -25,4 +24,20 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.form {
+  padding: 20px;
+  border: 2px solid;
+}
+
+#itext, #otext {
+  width: 500px;
+  height: 100px;
+  overflow-wrap: break-word;
+}
+
+#translate {
+  display: block;
+  text-align: center;
 }
