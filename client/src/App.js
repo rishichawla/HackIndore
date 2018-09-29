@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -22,35 +22,37 @@ class App extends Component {
     };
   }
 
-  const user = {
-    name: this.state.name
-  };
+  componentDidMount() {
+    const user = {
+      name: this.state.name
+    };
 
-  Axios.post('http://localhost:5000/hello', { user })
+    axios.post('http://localhost:5000/hello', { user })
       .then(res => {
-    res.send("data got");
-console.log(res);
+        res.send("data got");
+        console.log(res);
       })
+  }
 
-render() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Your Intelligent Keyboard</h1>
-      </header>
-      <div className="form">
-        <form onSubmit={this.handleSubmit}>
-          <p> Enter text to be translated: </p>
-          <textarea id="itext" name="text" onChange={this.handleChange} />
-          <button id="translate" type="submit"> Translate </button>
-          <p> Translated text: </p>
-          <textarea value={this.state} id="otext" onChange={this.handleChange} />
-        </form>
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Your Intelligent Keyboard</h1>
+        </header>
+        <div className="form">
+          <form onSubmit={this.handleSubmit}>
+            <p> Enter text to be translated: </p>
+            <textarea id="itext" name="text" onChange={this.handleChange} />
+            <button id="translate" type="submit"> Translate </button>
+            <p> Translated text: </p>
+            <textarea value={this.state} id="otext" onChange={this.handleChange} />
+          </form>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 export default App;

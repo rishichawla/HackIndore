@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const app = express();
+var fs = require('fs');
 var cors = require('cors');
 app.use(cors());
 var bodyParser = require('body-parser');
