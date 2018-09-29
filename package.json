@@ -1,5 +1,5 @@
 {
-  "name": "smartkey",
+  "name": "ikey",
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && yarn start",
@@ -7,11 +7,11 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
   }
 }
-
-"proxy": "http://localhost:5003/"
